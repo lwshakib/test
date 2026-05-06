@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Agency</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="hero">
+        <nav class="nav-bar">
+            <div class="logo">WanderWay</div>
+            <ul>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero-content">
+            <h1>Your next adventure starts here</h1>
+            <p>Explore unforgettable journeys with tailored travel packages for every destination.</p>
+            <a class="btn" href="#destinations">Discover Now</a>
+        </div>
+    </header>
+
+    <section id="destinations" class="section destinations">
+        <h2>Top Destinations</h2>
+        <div class="cards">
+            <article class="card">
+                <h3>Tropical Escape</h3>
+                <p>Relax on white sand beaches and clear blue water in the Maldives.</p>
+            </article>
+            <article class="card">
+                <h3>Mountain Retreat</h3>
+                <p>Find peace with scenic hikes and cozy resorts in the Alps.</p>
+            </article>
+            <article class="card">
+                <h3>City Explorer</h3>
+                <p>Experience vibrant culture, cuisine, and nightlife in Tokyo.</p>
+            </article>
+        </div>
+    </section>
+
+    <section id="services" class="section services">
+        <div class="service-grid">
+            <div>
+                <h2>Best Services</h2>
+                <p>Custom itineraries, flight booking, hotel planning, and seamless support.</p>
+            </div>
+            <div class="service-item">
+                <h3>Flight Booking</h3>
+                <p>Find flights that fit your schedule and budget.</p>
+            </div>
+            <div class="service-item">
+                <h3>Hotel Selection</h3>
+                <p>Stay in handpicked hotels close to popular attractions.</p>
+            </div>
+            <div class="service-item">
+                <h3>24/7 Support</h3>
+                <p>Travel assistance whenever and wherever you need it.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact">
+        <h2>Plan your dream trip</h2>
+        <form id="booking-form">
+            <input type="text" id="name" placeholder="Your name" required>
+            <input type="email" id="email" placeholder="Your email" required>
+            <select id="destination" required>
+                <option value="">Choose destination</option>
+                <option value="maldives">Maldives</option>
+                <option value="alps">Alps</option>
+                <option value="tokyo">Tokyo</option>
+            </select>
+            <button type="submit" class="btn">Request Quote</button>
+        </form>
+        <p id="message"></p>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 WanderWay Travel Agency</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
