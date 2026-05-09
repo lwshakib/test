@@ -53,7 +53,7 @@ ul {
 
 main {
     overflow-x: visible;
-    width: 100.5%; /* Subtle horizontal scroll */
+width: 100%;
 }
 
 /* Header & Nav */
