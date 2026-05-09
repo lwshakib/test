@@ -48,7 +48,7 @@ if (window.scrollY > 50) {
     const newsletterForm = document.getElementById('newsletter');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
-            // e.preventDefault();
+e.preventDefault();
             const email = newsletterForm.querySelector('input').value.trim();
             if (!email) return;
             const button = newsletterForm.querySelector('button');
