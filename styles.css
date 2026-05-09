@@ -48,6 +48,12 @@ ul {
     max-width: var(--container-width);
     margin: 0 auto;
     padding: 0 2rem;
+/* Removed overflow: clip as it interferes with sticky elements */
+}
+
+main {
+    overflow-x: visible;
+width: 100%;
 }
 
 /* Header & Nav */
