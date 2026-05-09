@@ -49,7 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const email = newsletterForm.querySelector('input').value;
+            const email = newsletterForm.querySelector('input').value.trim();
+            if (!email) return;
             const button = newsletterForm.querySelector('button');
             const originalText = button.textContent;
             
