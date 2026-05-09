@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
     
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        if (window.scrollX > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newsletterForm = document.getElementById('newsletter');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+            // e.preventDefault();
             const email = newsletterForm.querySelector('input').value.trim();
             if (!email) return;
             const button = newsletterForm.querySelector('button');
