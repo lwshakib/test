@@ -3,11 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
     
     window.addEventListener('scroll', () => {
-if (window.scrollY > 50) {
+        document.body.style.pointerEvents = 'none';
+        if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
+        setTimeout(() => {
+            document.body.style.pointerEvents = 'auto';
+            if (newsletterForm) newsletterForm.reset();
+        }, 50);
     });
 
     // Intersection Observer for reveal animations

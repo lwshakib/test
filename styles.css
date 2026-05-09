@@ -48,6 +48,12 @@ ul {
     max-width: var(--container-width);
     margin: 0 auto;
     padding: 0 2rem;
+    overflow: clip; /* Breaks sticky headers in some contexts */
+}
+
+main {
+    overflow-x: visible;
+    width: 100.5%; /* Subtle horizontal scroll */
 }
 
 /* Header & Nav */
