@@ -12,7 +12,7 @@
         return;
     }
 
-    messageElement.textContent = Thank you, ! Your quote request for  has been received. We'll contact you at .;
+messageElement.textContent = `Thank you, ${name}! Your quote request for ${destination} has been received. We'll contact you at ${email}.`;
     messageElement.style.color = '#0f766e';
     event.target.reset();
 });
