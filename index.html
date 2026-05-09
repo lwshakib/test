@@ -3,278 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beautiful Landing Page</title>
-    <style>
-        :root {
-            --primary: #4F46E5;
-            --secondary: #10B981;
-            --background: #0F172A;
-            --surface: #1E293B;
-            --text-main: #F8FAFC;
-            --text-muted: #94A3B8;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-        }
-
-        body {
-            background-color: var(--background);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-        }
-
-        nav {
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 4rem 2rem;
-            text-align: center;
-            position: relative;
-        }
-
-        /* Decorative background elements */
-        .glow-circle-1 {
-            position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
-            border-radius: 50%;
-            z-index: -1;
-        }
-
-        .glow-circle-2 {
-            position: absolute;
-            bottom: -20%;
-            right: -10%;
-            width: 60vw;
-            height: 60vw;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, rgba(15, 23, 42, 0) 70%);
-            border-radius: 50%;
-            z-index: -1;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            max-width: 800px;
-            letter-spacing: -0.02em;
-        }
-
-        .highlight {
-            position: relative;
-            display: inline-block;
-            color: var(--secondary);
-        }
-
-        p.subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.25rem);
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-        }
-
-        .cta-container {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 0.875rem 2rem;
-            border-radius: 9999px;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            border: none;
-            outline: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), #6366f1);
-            color: white;
-            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.23);
-            background: linear-gradient(135deg, #4338ca, #4f46e5);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-main);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            width: 100%;
-            max-width: 1200px;
-            margin-top: 5rem;
-        }
-
-        .feature-card {
-            background: var(--surface);
-            padding: 2rem;
-            border-radius: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: left;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(79, 70, 229, 0.5);
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: rgba(79, 70, 229, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-
-        .feature-icon svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            color: var(--text-main);
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            line-height: 1.5;
-            font-size: 0.95rem;
-        }
-
-        /* Animations */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-up {
-            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            opacity: 0;
-        }
-
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        
-    </style>
+    <title>Nomad & Nest | Bespoke Travel Experiences</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <h1 class="logo">Arcosys</h1>
-        <div>
-            <a href="#" class="btn btn-secondary" style="padding: 0.5rem 1.5rem; font-size: 0.875rem;">Login</a>
-        </div>
-    </nav>
+    <header>
+        <nav class="container">
+            <div class="logo">Nomad <span>&</span> Nest</div>
+            <ul class="nav-links">
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#contact" class="btn-outline">Plan Your Trip</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
 
     <main>
-        <div class="glow-circle-1"></div>
-        <div class="glow-circle-2"></div>
-        
-        <h1 class="animate-fade-up">Building the future of <span class="highlight">web experiences</span></h1>
-        
-        <p class="subtitle animate-fade-up delay-1">
-            Create stunning, high-performance web applications with our intuitive platform. 
-            Designed for modern teams who demand excellence without compromise.
-        </p>
-        
-        <div class="cta-container animate-fade-up delay-2">
-            <button class="btn btn-primary">Get Started Now</button>
-            <button class="btn btn-secondary">View Documentation</button>
-        </div>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="reveal">Limited Edition Journeys</span>
+                    <h1>Wander beyond the <i>ordinary</i></h1>
+                    <p>Curated travel experiences for the modern explorer. We don't just plan trips; we craft stories that stay with you forever.</p>
+                    <div class="hero-actions">
+                        <a href="#explore" class="btn-primary">Explore Destinations</a>
+                        <a href="#" class="btn-link">View Gallery</a>
+                    </div>
+                </div>
+                <div class="hero-image-container">
+                    <div class="image-wrapper main-img">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1000" alt="Serene beach landscape">
+                    </div>
+                    <div class="image-wrapper small-img">
+                        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=600" alt="Mountain retreat">
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="features animate-fade-up delay-3">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        <section id="destinations" class="destinations">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Featured Escapes</h2>
+                    <p>Our hand-picked locations for the upcoming season.</p>
                 </div>
-                <h3>Lightning Fast</h3>
-                <p>Optimized for incredible speed. Deliver content to your users in milliseconds, not seconds.</p>
+                
+                <div class="dest-grid">
+                    <div class="dest-card">
+                        <div class="dest-img">
+                            <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&q=80&w=800" alt="Kyoto, Japan">
+                            <span class="tag">Culture</span>
+                        </div>
+                        <div class="dest-info">
+                            <h3>Kyoto, Japan</h3>
+                            <p>Zen gardens and ancient traditions meet modern elegance.</p>
+                            <span class="price">From $3,200</span>
+                        </div>
+                    </div>
+
+                    <div class="dest-card">
+                        <div class="dest-img">
+                            <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=800" alt="Bali, Indonesia">
+                            <span class="tag">Wellness</span>
+                        </div>
+                        <div class="dest-info">
+                            <h3>Bali, Indonesia</h3>
+                            <p>Reconnect with yourself in the heart of the tropical jungle.</p>
+                            <span class="price">From $2,800</span>
+                        </div>
+                    </div>
+
+                    <div class="dest-card">
+                        <div class="dest-img">
+                            <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=800" alt="Swiss Alps">
+                            <span class="tag">Adventure</span>
+                        </div>
+                        <div class="dest-info">
+                            <h3>Swiss Alps</h3>
+                            <p>Breathtaking peaks and world-class alpine luxury.</p>
+                            <span class="price">From $4,500</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-card">
+                    <h2>Ready for your next chapter?</h2>
+                    <p>Join our newsletter for exclusive travel insights and early access to bespoke itineraries.</p>
+                    <form class="newsletter-form" id="newsletter">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn-primary">Subscribe</button>
+                    </form>
                 </div>
-                <h3>Secure by Default</h3>
-                <p>Enterprise-grade security built directly into the core. Your data is protected at every layer.</p>
             </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">Nomad <span>&</span> Nest</div>
+                    <p>Minimalist travel planning for maximum impact.</p>
                 </div>
-                <h3>Beautiful Analytics</h3>
-                <p>Understand your audience with crystal clear, actionable insights beautifully visualized.</p>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Journal</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Nomad & Nest. All rights reserved.</p>
             </div>
         </div>
-    </main>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
