@@ -26,23 +26,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }, observerOptions);
-
     // Apply observer to destination cards
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
     document.querySelectorAll('.dest-card').forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
         card.style.transition = 'all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)';
-        
-        // Custom observation logic
-        const cardObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
         cardObserver.observe(card);
     });
 
