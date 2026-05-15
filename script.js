@@ -80,12 +80,18 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth'
-                });
+            const selector = this.getAttribute('href');
+            try {
+                const target = document.querySelector(selector);
+                if (target) {
+                    const headerOffset = document.querySelector('header')?.offsetHeight || 80;
+                    window.scrollTo({
+                        top: target.offsetTop - headerOffset,
+                        behavior: 'smooth'
+                    });
+                }
+            } catch (error) {
+                console.error('Invalid scroll target:', selector);
             }
         });
     });
