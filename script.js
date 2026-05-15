@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newsletterForm = document.getElementById('newsletter');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (event) => {
-            e.preventDefault();
+            event.preventDefault();
             const input = newsletterForm.querySelector('input');
             const button = newsletterForm.querySelector('button');
             
