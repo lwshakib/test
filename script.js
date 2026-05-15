@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Newsletter form submission mock
     const newsletterForm = document.getElementById('newsletter');
     if (newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
+        newsletterForm.addEventListener('submit', (event) => {
             e.preventDefault();
             const input = newsletterForm.querySelector('input');
             const button = newsletterForm.querySelector('button');
