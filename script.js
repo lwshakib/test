@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
     
     window.addEventListener('scroll', () => {
-if (window.scrollY > 50) {
-    header.classList.add('scrolled');
-} else {
-    header.classList.remove('scrolled');
-}
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
     });
 
     // Intersection Observer for reveal animations
@@ -48,10 +48,15 @@ if (window.scrollY > 50) {
     const newsletterForm = document.getElementById('newsletter');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
-e.preventDefault();
-            const email = newsletterForm.querySelector('input').value.trim();
-            if (!email) return;
+            e.preventDefault();
+            const input = newsletterForm.querySelector('input');
             const button = newsletterForm.querySelector('button');
+            
+            if (!input || !button) return;
+
+            const email = input.value.trim();
+            if (!email) return;
+            
             const originalText = button.textContent;
             
             button.disabled = true;
