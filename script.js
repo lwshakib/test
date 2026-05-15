@@ -54,10 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!input || !button) return;
 
             const email = input.value.trim();
-            if (!email) return;
-            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
             const originalText = button.textContent;
-            
             button.disabled = true;
             button.textContent = 'Joining...';
             
